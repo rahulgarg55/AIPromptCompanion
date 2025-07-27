@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import AvatarImg from "../assets/girl.png"; // Adjust as per your project
+import { useTheme } from "../theme/ThemeContext";
 
 const sliderSettings = {
   dots: true,
@@ -28,6 +29,7 @@ const sliderSettings = {
 
 const mobileSliderSettings = {
   ...sliderSettings,
+  dots: false, // Ensure dots are hidden on mobile
   arrows: false,
   swipe: false,
   draggable: false,
@@ -73,6 +75,9 @@ const slides = [
 
 const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const {
+    /* darkMode */
+  } = useTheme();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -86,7 +91,9 @@ const HeroSection = () => {
   return (
     <div className="relative overflow-x-hidden px-10">
       <Slider
-        {...(isMobile ? mobileSliderSettings : sliderSettings)}
+        {...(isMobile
+          ? { ...mobileSliderSettings, dots: false }
+          : sliderSettings)}
         className="hero-slider relative overflow-visible mt-8"
       >
         {slidesToShow.map((slide) => (

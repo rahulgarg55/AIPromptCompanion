@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import pLogo from "../assets/p-logo.svg";
 import colImg from "../assets/col-2.png";
 import profileAvatar from "../assets/profile-avatar.png";
@@ -10,6 +10,7 @@ import bgCard from "../assets/bg-card.png";
 import generateIcon from "../assets/gallery-icon.png";
 import createdPrompt from "../assets/created-prompt.svg";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../theme/ThemeContext";
 
 const cardBgStyle = {
   backgroundImage: `url(${bgCard})`,
@@ -18,7 +19,7 @@ const cardBgStyle = {
 };
 
 const MainSection: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true); // toggle on left by default
+  const { darkMode, toggleDarkMode } = useTheme();
   const navigate = useNavigate();
 
   return (
@@ -94,7 +95,10 @@ const MainSection: React.FC = () => {
             className="rounded-3xl p-6 shadow-lg flex items-center justify-center"
             style={cardBgStyle}
           >
-            <button className="w-full py-3 px-6 rounded-full bg-gradient-to-br from-[#7B5FFF] to-[#9E57FF] text-white font-semibold text-lg shadow hover:opacity-90 transition flex items-center justify-center gap-2" onClick={() => navigate('/slider')}>
+            <button
+              className="w-full py-3 px-6 rounded-full bg-gradient-to-br from-[#7B5FFF] to-[#9E57FF] text-white font-semibold text-lg shadow hover:opacity-90 transition flex items-center justify-center gap-2"
+              onClick={() => navigate("/slider")}
+            >
               <img
                 src={generateIcon}
                 alt="icon"
@@ -128,7 +132,7 @@ const MainSection: React.FC = () => {
                   ? "bg-[#353657] border-[#7B5FFF]"
                   : "bg-[#E5E7EB] border-[#7B5FFF]"
               }`}
-              onClick={() => setDarkMode((d) => !d)}
+              onClick={toggleDarkMode}
             >
               <span
                 className={`w-6 h-6 rounded-full  transform transition-transform duration-300 flex items-center justify-center ${
