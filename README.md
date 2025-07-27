@@ -92,6 +92,7 @@ This project is a complete solution for the frontend developer assignment, demon
   - `/` - Main landing page
   - `/slider` - Interactive carousel section
   - **Generate button** routes to slider page
+- **Clicking the Generate button navigates to the slider page for an interactive experience.**
 - **Interactive carousel** with custom styling
 - **Modern UI/UX** with hover effects and animations
 

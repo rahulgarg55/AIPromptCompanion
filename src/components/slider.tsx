@@ -9,7 +9,8 @@ const sliderSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: false,
+  autoplay: true,
+  autoplaySpeed: 3000,
   arrows: false,
   centerMode: true,
   centerPadding: "13%",
@@ -34,6 +35,8 @@ const mobileSliderSettings = {
   swipe: false,
   draggable: false,
   infinite: false,
+  autoplay: true,
+  autoplaySpeed: 3000,
 };
 
 const slides = [
@@ -196,6 +199,7 @@ const HeroSection = () => {
   background: transparent;
   outline: none;
   position: relative;
+  font-size: 0 !important;
 }
 
 .hero-slider .slick-dots li button:before {
